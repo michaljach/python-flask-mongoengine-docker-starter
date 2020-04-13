@@ -7,6 +7,8 @@ services:
       - 5100:5100
     depends_on:
       - mongodb
+    environment:
+      - ENV=Development
   mongodb:
     image: mongo
     container_name: example-mongodb

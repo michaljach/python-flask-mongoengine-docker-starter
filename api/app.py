@@ -1,31 +1,17 @@
-import json
-from flask import Flask, request, jsonify
-from flask_restplus import Resource, Api, fields
-from mongoengine import Document, connect, StringField
+import os
+from flask import Flask
+from flask_restplus import Api
+from mongoengine import connect
+from config import *
+from v1.resources.routes import initialize_routes
 
 app = Flask(__name__)
-app.debug = True
-connect('test', host='mongodb', port=27017)
-
-
+config = globals()[os.environ['ENV']]
+app.config.from_object(config)
+connect('app', host=config.MONGODB_URL)
 api = Api(app)
 
-ns = api.namespace('v1', description='TODO operations')
-
-
-class Todo(Document):
-    title = StringField(required=True, max_length=200)
-    content = StringField(required=True)
-
-
-@ns.route('/todos')
-class HelloWorld(Resource):
-    def get(self):
-        try:
-            return json.loads(Todo.objects.all().to_json()), 200
-        except:
-            print("ec")
-
+initialize_routes(api)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5100)
+    app.run(host=config.HOST, port=config.PORT)
