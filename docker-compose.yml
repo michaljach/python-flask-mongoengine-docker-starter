@@ -1,16 +1,19 @@
-version: "2"
+version: "3.7"
 services:
   web:
+    container_name: example-web
     build: .
     ports:
-      - "5100:5100"
+      - 5100:5100
     depends_on:
-      - mongo
-    volumes:
-      - .:/usr/src/app/
-  mongo:
+      - mongodb
+  mongodb:
     image: mongo
+    container_name: example-mongodb
     ports:
-      - "27017:27017"
+      - 27017:27017
     volumes:
-      - .:/data/db
+      - db-data:/data/db
+
+volumes:
+  db-data:
