@@ -1,2 +1,4 @@
 flask
-flask-mongoengine
+flask-restplus
+Werkzeug==0.16.1
+mongoengine

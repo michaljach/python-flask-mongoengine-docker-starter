@@ -1,30 +1,30 @@
-import os
+import json
 from flask import Flask, request, jsonify
-from flask_mongoengine import MongoEngine
+from flask_restplus import Resource, Api, fields
+from mongoengine import Document, connect, StringField
 
 app = Flask(__name__)
 app.debug = True
-app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://mongodb/test'
-}
-
-db = MongoEngine(app)
+connect('test', host='mongodb', port=27017)
 
 
-class Todo(db.Document):
-    title = db.StringField(max_length=60)
-    content = db.StringField()
+api = Api(app)
+
+ns = api.namespace('v1', description='TODO operations')
 
 
-@app.route("/")
-def index():
-    Todo.objects().delete()  # Removes
-    Todo(title="Simple todo A", content="12345678910").save()  # Insert
-    Todo(title="Simple todo B", content="12345678910").save()  # Insert
-    Todo.objects(title__contains="B").update(
-        set__content="Hello world")  # Update
-    todos = Todo.objects.all()
-    return jsonify(todos), 200
+class Todo(Document):
+    title = StringField(required=True, max_length=200)
+    content = StringField(required=True)
+
+
+@ns.route('/todos')
+class HelloWorld(Resource):
+    def get(self):
+        try:
+            return json.loads(Todo.objects.all().to_json()), 200
+        except:
+            print("ec")
 
 
 if __name__ == "__main__":
