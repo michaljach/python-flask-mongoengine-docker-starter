@@ -12,6 +12,7 @@ This is a starter or boilerplate to create RESTful API with Python and MongoDB u
 - Mongoengine
 - Unittest
 - Docker
+- Swagger
 
 ## Usage
 
@@ -21,7 +22,7 @@ This is a starter or boilerplate to create RESTful API with Python and MongoDB u
 $ docker-compose up
 ```
 
-It will run both Web and Mongodb containers in Development environment.
+It will run both Web and Mongodb containers in Development environment on `localhost:5100`.
 For other environments change ENV in `docker-compose.yml`:
 
 ```sh
@@ -55,6 +56,11 @@ Here is a folder and file structure with explanation.
 └── tests
     └── text_base.py - Example test file
 ```
+
+## Documentation
+
+Thanks to handy decorators this boilerplate will generate Swagger with documentation on the fly.
+By default Swagger runs on `/` so you should see it on `http://localhost:5100`. Read more [here](https://flask-restplus.readthedocs.io/en/stable/swagger.html).
 
 ## Testing
 
