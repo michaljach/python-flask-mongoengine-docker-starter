@@ -1,6 +1,8 @@
 # python-flask-mongoengine-docker-starter
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Language](https://img.shields.io/badge/language-python3-brightgreen)](https://www.python.org/)
+[![License](https://img.shields.io/github/license/michaljach/python-flask-mongoengine-docker-starter)](https://opensource.org/licenses/MIT)
+[![Repo size](https://img.shields.io/github/repo-size/michaljach/python-flask-mongoengine-docker-starter)](https://github.com/michaljach/python-flask-mongoengine-docker-starter)
 
 This is a starter or boilerplate to create RESTful API with Python and MongoDB using Flask microframework. The project uses Docker (docker-compose) for easy to use, encapsulated and safe environment.
 
@@ -61,6 +63,8 @@ Here is a folder and file structure with explanation.
 
 Thanks to handy decorators this boilerplate will generate Swagger with documentation on the fly.
 By default Swagger runs on `/` so you should see it on `http://localhost:5100`. Read more [here](https://flask-restplus.readthedocs.io/en/stable/swagger.html).
+
+![Swagger](https://i.imgur.com/G7EbHK4.png)
 
 ## Testing
 
