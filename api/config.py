@@ -12,3 +12,7 @@ class Development(BaseConfig):
 
 class Testing(BaseConfig):
     MONGODB_URL = "mongodb://mongodb/test"
+
+
+class Prod(BaseConfig):
+    MONGODB_URL = "mongodb://mongodb/prod"

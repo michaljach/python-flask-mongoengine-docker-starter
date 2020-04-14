@@ -1,5 +1,4 @@
 flask
 flask-restplus
-flask-testing
 Werkzeug==0.16.1
 mongoengine
