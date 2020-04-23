@@ -9,6 +9,8 @@ services:
       - mongodb
     environment:
       - ENV=Development
+    volumes:
+      - .:/code
   mongodb:
     image: mongo
     container_name: example-mongodb
